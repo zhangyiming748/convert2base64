@@ -149,7 +149,7 @@ func getBase64(file GetFileInfo.Info) (string, error) {
 	if runtime.GOOS == "darwin" {
 		cmd = exec.Command("base64", "-i", file.FullPath)
 	} else if runtime.GOOS == "linux" {
-		cmd = exec.Command("base64", file.FullPath)
+		cmd = exec.Command("base64", "-w", "0", file.FullPath)
 	} else {
 		logger.Warn("垃圾Windows不支持")
 	}
